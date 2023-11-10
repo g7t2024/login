@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form onsubmit="return checkPassword()">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <script>
+        function checkPassword() {
+            let enteredPassword = document.getElementById('password').value;
+
+            fetch('config.json')
+                .then(response => response.json())
+                .then(config => {
+                    if (enteredPassword === config.password) {
+                        alert('Login bem-sucedido!');
+                        // Adicione aqui o redirecionamento ou lógica desejada após o login
+                    } else {
+                        alert('Senha incorreta. Tente novamente.');
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar config.json:', error));
+
+            // Evita que o formulário seja enviado
+            return false;
+        }
+    </script>
+</body>
+</html>
