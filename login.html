@@ -25,7 +25,11 @@
                 .then(config => {
                     if (enteredPassword === config.password) {
                         alert('Login bem-sucedido!');
-                        // Adicione aqui o redirecionamento ou lógica desejada após o login
+                        
+                    // Adicione aqui o redirecionamento ou lógica desejada após o login
+                    window.location.href = 'outra_pagina.html';
+                    
+                    
                     } else {
                         alert('Senha incorreta. Tente novamente.');
                     }
